@@ -1,15 +1,3 @@
-// const mongoose = require('mongoose');
-
-// const todoItems = new mongoose.Schema({
-//     item:{
-//         type:String,
-//         required:true
-//     }
-
-// })
-
-// module.exports = mongoose.model('todo',todoItems);
-
 const mongoose = require('mongoose');
 
 const todoItems = new mongoose.Schema({
@@ -18,21 +6,36 @@ const todoItems = new mongoose.Schema({
     required: true
   },
   description: {
-    type: String, // Add the description field as a string
-    required: true // Modify this based on your requirements
+    type: String, 
+    required: true 
   },
   category: {
-    type: String, // Add the category field as a string
-    required: true // Modify this based on your requirements
+    type: String, 
+    required: true 
   },
   dueDate: {
-    type: String, // Add the dueDate field as a string
-    required: true // Modify this based on your requirements
+    type: String, 
+    required: true 
   },
   status: {
-    type:String,
-    required:true,
-  }
+    type: String,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model('todo', todoItems);
+const UserSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique:true
+  },
+  password: {
+    type: String,
+    required: true,
+  }},{collection: 'user-data'});
+
+const todoItemsModel = mongoose.model('todo', todoItems);
+const User = mongoose.model('user', UserSchema);
+
+// module.exports = mongoose.model('todo', todoItems);
+module.exports = {todoItemsModel, User}
