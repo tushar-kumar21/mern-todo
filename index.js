@@ -11,7 +11,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 8000;
 
 app.use(cors({
-    methods:["GET, POST, PUT DELETE"],
+    methods:["GET, POST, PUT, DELETE"],
     credentials:true,
 }));
 
